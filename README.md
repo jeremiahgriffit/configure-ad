@@ -35,7 +35,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Begin by deploying two Azure virtual machines—one for the Active Directory Domain Controller (Windows Server 2022) and another for a client system (Windows 10). Configure each VM with a static private IP address. Using Remote Desktop, log into the Windows Server VM and install the role for the Active Directory Domain Services (AD DS) through Server Manager. Promote the server to a domain controller, specifying a new root domain name (e.g., ad.yourdomain.com) during the wizard process. After the server reboots, the Active Directory will be ready for initial configuration.
 </p>
 <br />
 
@@ -43,7 +43,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Then, configure the DNS services on the domain controller so that clients can resolve internal names. Set the Windows 10 DNS settings to point to the domain controller's IP address. Join the Windows 10 machine to the domain by navigating to System > About > Rename this PC (Advanced) and entering the domain name you created earlier. Upon successful domain join, reboot the client and verify connectivity and authentication with Active Directory by logging in using domain credentials.
 </p>
 <br />
 
@@ -51,6 +51,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
+At last, use the console for Active Directory Users and Computers on the domain controller to establish not only user accounts but also organizational units. Use PowerShell or Server Manager where necessary to configure group policies that determine such things as password requirements, desktop backgrounds, and the installation of software. Then, verify that all accounts and groups work as they should by using a new domain user to log into the Windows 10 VM.
 <br />
